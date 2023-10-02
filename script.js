@@ -23,3 +23,9 @@ let writePassword = function() {
   if (lowercase) {  
     typeCount++;
   }
+
+  let uppercase = confirm("Would you like to include uppercase letters? ('ok' for yes and 'cancel' for no)");
+  console.log("The user wants uppercase: " + uppercase);
+  if (uppercase) {
+    typeCount++;
+  }
