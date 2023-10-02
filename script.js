@@ -41,3 +41,10 @@ let writePassword = function() {
   if (special) {
     typeCount++;
   }
+
+  console.log("the user has chosen " + typeCount + " different character types");
+
+  if (typeCount == 0) {
+    window.alert("Sorry, you need at least one character type. Please try again.");
+    return;
+  }
