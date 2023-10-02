@@ -35,3 +35,9 @@ let writePassword = function() {
   if (number) {
     typeCount++;
   }
+
+  let special = confirm("include special characters? ('ok' for yes and 'cancel' for no)");
+  console.log("The user wants special characters: " + special);
+  if (special) {
+    typeCount++;
+  }
