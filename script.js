@@ -1,3 +1,4 @@
+// Assignment code here
 let generateBtn = document.querySelector("#generate");
 
 let writePassword = function() {
