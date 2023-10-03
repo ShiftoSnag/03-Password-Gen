@@ -48,3 +48,85 @@ let writePassword = function() {
     window.alert("Sorry, you need at least one character type. Please try again.");
     return;
   }
+
+  let ranChar = function (x, y) {
+    for (let i = 0; i < x; i++) {
+      orderedPw += y.charAt(Math.floor(Math.random() * (y.length - 1)));
+    }
+  }
+
+  if (lowercase) { 
+    if (typeCount == 1) {
+      numLowercase = userLength; 
+      userLength = 0;
+    } else {
+      numLowercase = Math.floor(Math.random() * (userLength - typeCount) + 1);
+      userLength = userLength - numLowercase; 
+    }
+    ranChar(numLowercase, lowerList);
+    typeCount--; 
+    console.log(numLowercase + " lowercase, " + userLength + " characters left, " + typeCount + " password types left");
+  }
+
+  if (uppercase) {
+    if (typeCount == 1) {
+      numUppercase = userLength;
+      userLength = 0;
+    } else {
+      numUppercase = Math.floor(Math.random() * (userLength - typeCount) + 1);
+      userLength = userLength - numUppercase;
+    }
+    ranChar(numUppercase, upperList);
+    typeCount--;
+    console.log(numUppercase + " uppercase, " + userLength + " characters left, " + typeCount + " password types left");
+  }
+
+  if (number) {
+    if (typeCount == 1) {
+      numNumber = userLength;
+      userLength = 0;
+    } else {
+      numNumber = Math.floor(Math.random() * (userLength - typeCount) + 1);
+      userLength = userLength - numNumber;
+    }
+    ranChar(numNumber, numberList);
+    typeCount--;
+    console.log(numNumber + " numbers, " + userLength + " characters left, " + typeCount + " password types left");
+  }
+
+  if (special) {
+    if (typeCount == 1) {
+      numSpecial = userLength;
+      userLength = 0;
+    } else {
+      numSpecial = Math.floor(Math.random() * (userLength - typeCount) + 1);
+      userLength = userLength - numSpecial;
+    }
+    ranChar(numSpecial, specialList);
+    typeCount--;
+    console.log(numSpecial + " special characters, " + userLength + " characters left, " + typeCount + " password types left");
+  }
+
+  console.log("lowercase:" + numLowercase + " uppercase:" + numUppercase + " numbers:" + numNumber + " special characters:" + numSpecial); 
+  console.log("ordered password: " + orderedPw);
+
+
+
+
+  
+  let shufflePw = orderedPw.split(""); 
+  let a, b, c 
+  for (a = 0; a < shufflePw.length; a++) { 
+    b = Math.floor(Math.random() * (shufflePw.length - 1));
+    c = shufflePw[a]; 
+    shufflePw[a] = shufflePw[b]; 
+    shufflePw[b] = c; 
+  }
+
+  let password = shufflePw.join(""); 
+
+  document.querySelector("#password").value = password;
+}
+
+
+generateBtn.addEventListener("click", writePassword);
